@@ -17,32 +17,32 @@ body{
     font-weight:  bold;
 }
 
-
-a{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
 /*ヘッダー*/
 header{
     width: 100%;
     height: 65px;
     background-color: #64b9e6;
+    position: fixed;
+    z-index: 2;
 }
 
 .head_position{
-    width: 1000px;
-    height: 65px;
-    background-color: #64b9e6;
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
     margin: 0 auto;
 }
 
 .navi{
     width: 480px;
     display: flex;
-    position: relative;
+    position: absolute;
     top: 25px;
-    left: 520px;
+    right: 5px;
+}
+
+.navilist{
+    display: inline-block;
 }
 
 .navi li{
@@ -55,9 +55,17 @@ header{
     position: relative;
     display: inline-block;
     padding-left: 15px;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
-.navi a::before{
+.arrow{
+    position: relative;
+    display: inline-block;
+
+}
+
+.arrow::before, .arrow::after{
     content: '';
     width: 9px;
     height: 9px;
@@ -70,35 +78,21 @@ header{
     position: absolute;
     top: 50%;
     left: -3px;
-    margin-top: -7px;
+    margin-top: -6px;
 }
 
-.arrow{
-    position: relative;
-    display: inline-block;
-
+.arrow::after{
+    left: -10px;
 }
 
-.arrow::before{
-    content: '';
-    width: 9px;
-    height: 9px;
-    border: 0px;
-    border-top: solid 2px #FFFFFF;
-    border-right: solid 2px #FFFFFF;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    position: absolute;
-    top: 50%;
-    right: 2px;
-    margin-top: -13px;
-}
-
+/*メインコンテンツ*/
 #warp{
     width: 1000px;
     font-size: 2.4rem;
     margin: 0 auto;
+    padding-top: 65px;
+    position:relative;
+    z-index:1;
 }
 
 .groupimg{
@@ -107,6 +101,7 @@ header{
 
 .groupimg img{
     width: 100%;
+    height: 100%;
 }
 
 /*ブリーズimgコンテンツ*/
@@ -137,6 +132,13 @@ header{
     background-color: #93c3d8;
 }
 
+.break:before {
+    /*所在地でも使用*/
+    content: "\A";
+    white-space: normal;
+}
+
+
 /*idタグ紹介コンテンツ*/
 h2{
     font-size: 2.8rem;
@@ -152,7 +154,7 @@ h2{
 
 /*事業内容*/
 #content{
-    margin: 30px 0px;
+    padding-top: 65px;
 }
 
 .development_ses{
@@ -189,6 +191,7 @@ h2{
     display: block;
     border-bottom: 2px solid  #FF4568;
     margin-bottom: 10px;
+    padding-top: 0px;
 }
 
 .development_ses_comment li{
@@ -213,10 +216,12 @@ h2{
 }
 
 .others1{
+    width: 100%;
     display: flex;
     margin-bottom: 20px;
     height: 90px;
     border-top: solid 2.5px #93c3d8;
+    margin-bottom: 20px;
 }
 
 .others2{
@@ -226,11 +231,14 @@ h2{
     width: 300px;
     height: 48px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .others2 h3{
-    margin: 10px 0px;
+    margin: 0px;
+    padding: 12px 0px;
 }
+
 
 .others3{
     width: 310px;
@@ -243,13 +251,18 @@ h2{
     list-style: none;
 }
 
+.others3 ul li{
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
 /*関連会社*/
 #affiliated{
-    margin-bottom: 30px;
+    padding-top: 65px;
 }
 
 #affiliated h2{
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 #affiliated p{
@@ -257,7 +270,7 @@ h2{
 }
 
 #affiliated .others1{
-    height: 180px;
+    height: 100%;
 }
 
 .others4{
@@ -265,23 +278,11 @@ h2{
     margin-bottom: 0px;
 }
 
-p span{
-    position: relative;
+.underline{
+    text-decoration: underline;
 }
 
-p span::before{
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 2px;
-    display: inline-block;
-    width: 100%;
-    height: 1px;
-    -moz-transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translate(-50%);
-    background-color: #333;}
+
 
 .otehers_img{
     text-align: center;
@@ -289,24 +290,34 @@ p span::before{
 
 /*所在地*/
 #location{
-    margin-bottom: 30px;
+    padding: 65px 0px 40px 0px;
+    margin: 0 auto;
 }
 
 #location h2{
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .map_info{
+    width: 100%;
     display: flex;
 }
 
 .map{
     width: 50%;
+    height: 350px;
     text-align: center;
 }
 
+.map iframe{
+    width: 100%;
+    height: 100%;
+}
+
+
 .info{
-    margin: 50px 10px 50px 30px;
+    padding: 85px 0px;
+    margin: 0 auto;
 }
 
 .info2{
@@ -321,15 +332,22 @@ p span::before{
 /*フッター*/
 footer{
     width: 100%;
+    min-width: 1000px;
     background-color: #93c3d8;
+    position: relative;
+    z-index: 1;
 }
 
 .footer_all{
-    width: 1000px;
     margin: 0 auto;
     text-align: center;
-    background-color: #93c3d8;
     color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer_all a{
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .footer1{
@@ -355,5 +373,146 @@ footer{
     padding: 20px 0px;
 }
 
-@media screen and (max-width:1000px){
+/*メディアクエリ*/
+@media screen and (max-width:480px){
+
+    /*ヘッダー*/
+    .head_position{
+        max-width: 320px;
+    }
+
+    .navi{
+        width: 320px;
+        right: -10px;
+    }
+
+    .navilist{
+        display: none;
+    }
+
+    .navi li{
+        padding-right: 15px;
+    }
+
+    .arrow::before, .arrow::after{
+        margin-top: -7px;
+    }
+
+    /*メインコンテンツ*/
+    #warp{
+        width: 100%;
+        min-width: 320px;
+    }
+
+    .groupimg{
+        width: 100%;
+    }
+
+    .groupimg img{
+        height: 130px;
+    }
+
+    /*ブリーズimgコンテンツ*/
+    .main{
+        width: 100%;
+    }
+
+    .main h1{
+        font-size: 2.6rem;
+    }
+
+    .break:before {
+        content: "\A";
+        white-space: pre;
+    }
+
+    .main h1::before{
+        width: 300px;
+        height: 5px;
+    }
+
+    /*idタグ紹介コンテンツ*/
+    /*h2変更なし*/
+
+    /*事業内容*/
+    .development_ses{
+        width: 90%;
+    }
+
+    .development{
+        margin: 10px 0px;
+    }
+
+    .development_ses_comment{
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .development_ses_color{
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .development_ses_comment ul{
+        margin: 10px;
+    }
+
+    .development_ses_comment ul h3{
+        padding: 10px 0px 0px 5px;
+    }
+
+    .development_ses_img{
+        height: 50%;
+        top: 5px;
+        text-align: center;
+    }
+
+    .others1{
+        display: inline-block;
+        margin-bottom: 0px;
+        height: 100%;
+        border-top: none;
+        margin-bottom: 10px;
+    }
+
+    .others2{
+        width: 100%;
+    }
+
+    .others3{
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    /*関連会社*/
+    #affiliated h2{
+        margin-bottom: 10px;
+    }
+
+    /*所在地*/
+    #location h2{
+        margin-bottom: 10px;
+    }
+
+    .map_info{
+        display: inline-block;
+    }
+
+    .map{
+        width: 100%;
+    }
+
+    .map iframe{
+        width: 95%;
+    }
+
+    .info{
+        padding: 20px 40px 0px 40px;
+    }
+
+    /*フッター*/
+    footer{
+        min-width: 320px;
+    }
 }
